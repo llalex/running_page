@@ -108,6 +108,9 @@ class Track:
         self.average_heartrate = tcx.hr_avg
         polyline_container = []
         position_values = tcx.position_values()
+        if not position_values:
+          position_values = [(float(30.496569774141996), float(114.39520320865735))]
+
         line = [s2.LatLng.from_degrees(p[0], p[1]) for p in position_values]
         self.polylines.append(line)
         polyline_container.extend([[p[0], p[1]] for p in position_values])
